@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
+
 body {
     width: 100vw;
     height: 100vh;
@@ -14,11 +16,102 @@ body {
 
 .app {
     max-width: 500px;
-    min-height: 800px;
+    min-height: 600px;
     margin: 0px auto;
-    transform: translateY(5%);
+    transform: translateY(10%);
     background-color: #FFF;
     border-radius: 25px;
     padding: 10px;
+    box-shadow: 20px 20px 25px rgba(0, 0, 0, 0.808);
+}
 
+.header {
+    font-size: 26px;
+    text-align: center;
+    margin: 10px 0;
+    font-family: 'Open Sans', sans-serif;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.logo {
+    display: flex;
+}
+
+.logo img {
+    width: 150px;
+    height: 150px;
+    margin: 15px auto;
+    border-radius: 30%;
+}
+
+/* forms styling */
+.forms {
+    margin-bottom: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.forms div {
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+.amount-input {
+    flex-basis: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 10px;
+
+
+}
+
+.amount-input input {
+    width: 70%;
+    height: 35px;
+    border: 2px solid #000;
+    border-radius: 15px;
+    font-size: 20px;
+    padding: 0 15px 0 15px;
+    font-family: 'Open Sans', sans-serif;
+    text-transform: uppercase;
+
+}
+
+.amount-input select {
+    box-sizing: content-box;
+    width: 15%;
+    height: 35px;
+    border: 2px solid #000;
+    border-radius: 15px;
+    font-size: 20px;
+    margin-left: 10px;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.amount-input button {
+    box-sizing: content-box;
+    width: 85%;
+    height: 35px;
+    border: 2px solid #000;
+    border-radius: 15px;
+    font-size: 20px;
+    font-family: 'Open Sans', sans-serif;
+    margin-top: 20px;
+    text-transform: uppercase;
+
+}
+
+.amount-input input:focus,
+.amount-input select:focus {
+    border: 2px solid rgba(80, 171, 212, 0.808);
+}
+
+.amount-input button:hover {
+    color: #FFF;
+    background-color: rgba(80, 171, 212, 0.808);
 }
