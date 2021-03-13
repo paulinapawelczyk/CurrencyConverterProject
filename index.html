@@ -25,17 +25,17 @@
             <div class="forms">
                 <form class="amount-input">
                     <input type="number" placeholder="Amount to convert" id="amount-value">
-                    <select name="amount-from">
-                        <option selected value="EUR">EUR</option>
+                    <select name="amount-from" id="amount-code">
+                        <option value="EUR">EUR</option>
                         <option value="USD">USD</option>
                         <option value="CHF">CHF</option>
                     </select>
-                    <button type="submit">Count</button>
+                    <button id="btnCount" type="submit">Count</button>
                 </form>
             </div>
             <div class="output">
-                <div class="rate">Lorem ipsum</div>
-                <div class="exchangeResult">Lorem ipsum</div>
+                <div class="rate"></div>
+                <div class="exchangeResult"></div>
                 <p>PLN</p>
             </div>
         </div>
