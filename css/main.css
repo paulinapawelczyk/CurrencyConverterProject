@@ -23,7 +23,7 @@ body {
     background-color: #FFF;
     border-radius: 25px;
     padding: 10px;
-    box-shadow: 20px 20px 25px rgba(0, 0, 0, 0.808);
+    box-shadow: 0 0 25px 25px rgba(0, 0, 0, 0.6);
 }
 
 .header {
@@ -80,6 +80,8 @@ body {
     padding: 0 15px 0 15px;
     font-family: 'Open Sans', sans-serif;
     text-transform: uppercase;
+    transition: 1s;
+
 
 }
 
@@ -92,6 +94,7 @@ body {
     font-size: 20px;
     margin-left: 10px;
     font-family: 'Open Sans', sans-serif;
+    transition: 1s;
 }
 
 .amount-input button {
@@ -104,6 +107,7 @@ body {
     font-family: 'Open Sans', sans-serif;
     margin: 20px 10px 0px 10px;
     text-transform: uppercase;
+    transition: 1s;
 
 }
 
@@ -113,7 +117,6 @@ body {
 }
 
 .amount-input button:hover {
-    font-weight: bold;
     background-color: rgb(39, 176, 218);
 }
 
