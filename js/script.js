@@ -10,13 +10,33 @@ const exchangeCurr = (e) => {
     e.preventDefault();
 
     let newDate = new Date();
-    //!!!!!!to do - LOOP for weekends!!!!!!
-    let actualDate = newDate.setDate(newDate.getDate() - 3);
+    console.log(newDate);
+    let actualDate;
+    let requestDate;
+    let fetchUrl;
 
-    let yesterdayDate = newDate.toISOString().split('T')[0];
-    // console.log(yesterdayDate);
+    //loop for weekends when rates are not updated
+    if (newDate.getDay() == 0) {
+        actualDate = newDate.setDate(newDate.getDate() - 2);
+        requestDate = newDate.toISOString().split('T')[0];
+        fetchUrl = `http://api.nbp.pl/api/exchangerates/tables/a/${requestDate}/`;
 
-    fetch(`http://api.nbp.pl/api/exchangerates/tables/a/${yesterdayDate}/`)
+    } else if (newDate.getDay() == 6) {
+        console.log('sobota');
+        actualDate = newDate.setDate(newDate.getDate() - 1);
+        requestDate = newDate.toISOString().split('T')[0];
+        fetchUrl = `http://api.nbp.pl/api/exchangerates/tables/a/${requestDate}/`;
+
+    } else {
+        console.log('tydzien');
+        // fetchUrl = `http://api.nbp.pl/api/exchangerates/tables/a/today/`;
+        actualDate = newDate.setDate(newDate.getDate());
+        requestDate = newDate.toISOString().split('T')[0];
+        fetchUrl = `http://api.nbp.pl/api/exchangerates/tables/a/${requestDate}/`;
+
+    }
+
+    fetch(fetchUrl)
         .then(result => result.json())
         .then(json => getPrices(json[0]))
         .catch(err => console.log('Brak danych dla aktualnej daty'))
@@ -38,7 +58,6 @@ const getPrices = (data) => {
 
     }
 
-
     const amountCurrency = data.rates;
 
     amountCurrency.forEach(elem => {
@@ -53,7 +72,6 @@ const getPrices = (data) => {
 
     currencyResult.value = "EUR";
     // input.value = null;
-
 
 }
 btnCount.addEventListener('click', exchangeCurr);
