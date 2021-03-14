@@ -61,6 +61,10 @@ body {
     text-transform: uppercase;
 }
 
+.forms .error-message {
+    color: #FF0000;
+}
+
 .amount-input {
     flex-basis: 100%;
     display: flex;

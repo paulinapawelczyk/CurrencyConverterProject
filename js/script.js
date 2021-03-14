@@ -3,6 +3,8 @@ const input = document.querySelector('input');
 const currencyResult = document.getElementById('amount-code');
 const rateOutput = document.querySelector('.rate');
 const changeValue = document.querySelector('.exchangeResult');
+const error = document.querySelector('.error-message');
+
 
 const exchangeCurr = (e) => {
     e.preventDefault();
@@ -25,8 +27,19 @@ const exchangeCurr = (e) => {
 
 const getPrices = (data) => {
     let rate = 0;
-    const inputValue = input.value;
+    let inputValue;
     const inputCurrency = currencyResult.options[currencyResult.selectedIndex].value;
+
+    //add prevent to put null or inproper value
+    if (input.value == 0) {
+        error.textContent = "Please put a proper value!";
+        input.value = null;
+    }
+    else {
+        error.textContent = "";
+        inputValue = input.value;
+    }
+
 
     const amountCurrency = data.rates;
 
