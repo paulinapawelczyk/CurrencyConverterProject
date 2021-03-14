@@ -180,7 +180,7 @@ body {
 @media screen and (max-width: 380px) {
 
     .app {
-        height: 80vh;
+        height: 85vh;
         transform: translateY(10%);
     }
 
@@ -253,7 +253,8 @@ body {
 @media screen and (orientation: landscape) and (max-width: 640px) {
     .app {
         min-height: 200px;
-        transform: translateY(2%);
+        transform: translateY(0%);
+        padding-bottom: 5px;
     }
 
     .header {

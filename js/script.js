@@ -20,10 +20,7 @@ const exchangeCurr = (e) => {
         .then(result => result.json())
         .then(json => getPrices(json[0]))
         .catch(err => console.log('Brak danych dla aktualnej daty'))
-
-
 }
-
 
 const getPrices = (data) => {
     let rate = 0;
@@ -38,6 +35,7 @@ const getPrices = (data) => {
     else {
         error.textContent = "";
         inputValue = input.value;
+
     }
 
 
@@ -51,7 +49,7 @@ const getPrices = (data) => {
     )
 
     rateOutput.textContent = `1 ${inputCurrency} = ${rate.toFixed(2)} PLN`;
-    changeValue.textContent = `${(inputValue * rate).toFixed(2)}`;
+    changeValue.textContent = (inputValue != null) ? `${(inputValue * rate).toFixed(2)}` : 0;
 
     currencyResult.value = "EUR";
     // input.value = null;
