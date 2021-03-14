@@ -9,7 +9,8 @@ const exchangeCurr = (e) => {
     e.preventDefault();
 
     let newDate = new Date();
-    let actualDate = newDate.setDate(newDate.getDate() - 1);
+    //!!!!!!to do - LOOP for weekends!!!!!!
+    let actualDate = newDate.setDate(newDate.getDate() - 2);
 
     let yesterdayDate = newDate.toISOString().split('T')[0];
     // console.log(yesterdayDate);
@@ -22,14 +23,20 @@ const exchangeCurr = (e) => {
 
 
 const getPrices = (data) => {
-
-
-
+    let rate = 0;
     const inputValue = input.value;
-    const currency = currencyResult.options[currencyResult.selectedIndex].text;
-    let amountCurrency = data.rates[9].code;
-    console.log(amountCurrency);
+    const inputCurrency = currencyResult.options[currencyResult.selectedIndex].value;
 
+    const amountCurrency = data.rates;
+
+    amountCurrency.forEach(elem => {
+        if (elem.code == inputCurrency) {
+            rate = elem.mid;
+        }
+    }
+    )
+
+    console.log(rate);
 
 }
 btnCount.addEventListener('click', exchangeCurr);
