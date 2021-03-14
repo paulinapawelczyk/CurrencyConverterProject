@@ -10,7 +10,6 @@ const exchangeCurr = (e) => {
     e.preventDefault();
 
     let newDate = new Date();
-    console.log(newDate);
     let actualDate;
     let requestDate;
     let fetchUrl;
@@ -19,20 +18,20 @@ const exchangeCurr = (e) => {
     if (newDate.getDay() == 0) {
         actualDate = newDate.setDate(newDate.getDate() - 2);
         requestDate = newDate.toISOString().split('T')[0];
-        fetchUrl = `http://api.nbp.pl/api/exchangerates/tables/a/${requestDate}/`;
+        fetchUrl = `https://api.nbp.pl/api/exchangerates/tables/a/${requestDate}/`;
 
     } else if (newDate.getDay() == 6) {
         console.log('sobota');
         actualDate = newDate.setDate(newDate.getDate() - 1);
         requestDate = newDate.toISOString().split('T')[0];
-        fetchUrl = `http://api.nbp.pl/api/exchangerates/tables/a/${requestDate}/`;
+        fetchUrl = `https://api.nbp.pl/api/exchangerates/tables/a/${requestDate}/`;
 
     } else {
         console.log('tydzien');
         // fetchUrl = `http://api.nbp.pl/api/exchangerates/tables/a/today/`;
         actualDate = newDate.setDate(newDate.getDate());
         requestDate = newDate.toISOString().split('T')[0];
-        fetchUrl = `http://api.nbp.pl/api/exchangerates/tables/a/${requestDate}/`;
+        fetchUrl = `https://api.nbp.pl/api/exchangerates/tables/a/${requestDate}/`;
 
     }
 
