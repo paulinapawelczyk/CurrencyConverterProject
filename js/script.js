@@ -9,7 +9,7 @@ const error = document.querySelector('.error-message');
 const exchangeCurr = (e) => {
     e.preventDefault();
 
-    let newDate = new Date('2021-03-15T13:14:00');
+    let newDate = new Date();
     let dateDay = newDate.getDay();
     let dateHours = newDate.getHours();
 
