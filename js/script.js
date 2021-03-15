@@ -9,33 +9,40 @@ const error = document.querySelector('.error-message');
 const exchangeCurr = (e) => {
     e.preventDefault();
 
-    let newDate = new Date();
-    let actualDate;
+    let newDate = new Date('2021-03-15T13:14:00');
+    let dateDay = newDate.getDay();
+    let dateHours = newDate.getHours();
+
+    let calculateDate;
     let requestDate;
     let fetchUrl;
 
-    //loop for weekends when rates are not updated
-    if (newDate.getDay() == 0) {
-        actualDate = newDate.setDate(newDate.getDate() - 2);
+    //loop for weekends when currency rate are not updated
+    {
+        //if sunday take from friday
+        if (dateDay == 0) {
+            calculateDate = newDate.setDate(newDate.getDate() - 2);
+
+            //if saturday take from friday or if hour before 11
+        } else if ((dateDay == 6) || (dateHours < 13 && dateDay != 1 && dateDay != 0 && dateDay != 6)) {
+            calculateDate = newDate.setDate(newDate.getDate() - 1);
+
+            //if monday before 11 when rates are publish take from Friday
+        } else if (dateDay == 1 && dateHours < 13) {
+            calculateDate = newDate.setDate(newDate.getDate() - 3);
+        }
+        // other days
+        else {
+            calculateDate = newDate.setDate(newDate.getDate());
+        }
+
+
         requestDate = newDate.toISOString().split('T')[0];
         fetchUrl = `https://api.nbp.pl/api/exchangerates/tables/a/${requestDate}/`;
-
-    } else if (newDate.getDay() == 6) {
-        console.log('sobota');
-        actualDate = newDate.setDate(newDate.getDate() - 1);
-        requestDate = newDate.toISOString().split('T')[0];
-        fetchUrl = `https://api.nbp.pl/api/exchangerates/tables/a/${requestDate}/`;
-
-    } else {
-        console.log('tydzien');
-        // fetchUrl = `http://api.nbp.pl/api/exchangerates/tables/a/today/`;
-        actualDate = newDate.setDate(newDate.getDate());
-        requestDate = newDate.toISOString().split('T')[0];
-        fetchUrl = `https://api.nbp.pl/api/exchangerates/tables/a/${requestDate}/`;
-
     }
 
     fetch(fetchUrl)
+
         .then(result => result.json())
         .then(json => getPrices(json[0]))
         .catch(err => console.log('Brak danych dla aktualnej daty'))
