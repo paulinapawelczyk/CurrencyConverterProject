@@ -14,4 +14,4 @@ Also dates for Monday before 1p.m are taken from Friday.
 For week days before 1 p.m data are taken from day before.
 
 
-
+🌞 GitHub Page: https://paulinapawelczyk.github.io/CurrencyConverterProject/
